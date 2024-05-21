@@ -1,0 +1,158 @@
+{
+"characters":[
+  {
+    "id": 1,
+    "Imię": "Morgrim Żeliwny",
+    "Rasa": "Krasnolud",
+    "Klasa": "Mag",
+    "Wiek": 15,
+    "Atrybuty": {
+      "WW": 50,
+      "US": 44,
+      "SW": 55,
+      "INT": 49,
+      "S": 46,
+      "ZR": 45,
+      "ZW": 40,
+      "SPO": 36,
+      "ODP": 39,
+      "CHAR": 39,
+      "SZCZ": 21
+    },
+    "PZ": "6/15",
+    "OŚ": "1/1"
+  },
+  {
+    "id": 2,
+    "Imię": "Alkali 'Uciekinier' Zenit",
+    "Rasa": "Pół-Elf",
+    "Klasa": "Zaklinacz",
+    "Wiek": 141,
+    "Atrybuty": {
+      "WW": 41,
+      "US": 54,
+      "SW": 22,
+      "INT": 26,
+      "S": 32,
+      "ZR": 45,
+      "ZW": 48,
+      "SPO": 31,
+      "ODP": 24,
+      "CHAR": 33,
+      "SZCZ": 47
+    },
+    "PZ": "11/11",
+    "OŚ": "2/2"
+  },
+  {
+    "id": 3,
+    "Imię": "Mara Arseal",
+    "Rasa": "Elf",
+    "Klasa": "Kleryk",
+    "Wiek": 39,
+    "Atrybuty": {
+      "WW": 41,
+      "US": 44,
+      "SW": 65,
+      "INT": 51,
+      "S": 38,
+      "ZR": 48,
+      "ZW": 47,
+      "SPO": 46,
+      "ODP": 34,
+      "CHAR": 35,
+      "SZCZ": 26
+    },
+    "PZ": "4/10",
+    "OŚ": "1/1"
+  },
+  {
+    "id": 4,
+    "Imię": "Chiringchong Ping-Peng",
+    "Rasa": "Człowiek",
+    "Klasa": "Mnich",
+    "Wiek": 16,
+    "Atrybuty": {
+      "WW": 37,
+      "US": 27,
+      "SW": 33,
+      "INT": 37,
+      "S": 43,
+      "ZR": 53,
+      "ZW": 60,
+      "SPO": 44,
+      "ODP": 30,
+      "CHAR": 34,
+      "SZCZ": 15
+    },
+    "PZ": "14/16",
+    "OŚ": "2/2"
+  },
+  {
+    "id": 5,
+    "Imię": "Malon Kebonas",
+    "Rasa": "Elf",
+    "Klasa": "Bard",
+    "Wiek": 369,
+    "Atrybuty": {
+      "WW": 45,
+      "US": 43,
+      "SW": 43,
+      "INT": 42,
+      "S": 43,
+      "ZR": 48,
+      "ZW": 44,
+      "SPO": 31,
+      "ODP": 29,
+      "CHAR": 46,
+      "SZCZ": 12
+    },
+    "PZ": "11/11",
+    "OŚ": "1/1"
+  },
+  {
+    "id": 6,
+    "Imię": "Oriseisejusz Karmelian Damian Adamus 3 swojego imienia von Sarada",
+    "Rasa": "Człowiek",
+    "Klasa": "Czarnoksiężnik / Hexblade",
+    "Wiek": 19,
+    "Atrybuty": {
+      "WW": 37,
+      "US": 32,
+      "SW": 63,
+      "INT": 29,
+      "S": 34,
+      "ZR": 37,
+      "ZW": 44,
+      "SPO": 31,
+      "ODP": 34,
+      "CHAR": 40,
+      "SZCZ": 10
+    },
+    "PZ": "15/15",
+    "OŚ": "2/2"
+  },
+  {
+    "id": 7,
+    "Imię": "Baldrich Trachnir",
+    "Rasa": "Człowiek",
+    "Klasa": "Paladyn",
+    "Wiek": 70,
+    "Atrybuty": {
+      "WW": 42,
+      "US": 26,
+      "SW": 33,
+      "INT": 37,
+      "S": 75,
+      "ZR": 39,
+      "ZW": 41,
+      "SPO": 36,
+      "ODP": 41,
+      "CHAR": 32,
+      "SZCZ": 26
+    },
+    "PZ": "14/16",
+    "OŚ": "2/2"
+  }
+]
+}

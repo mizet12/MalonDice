@@ -73,4 +73,7 @@ client.on('interactionCreate', async interaction => {
 
 client.login(token);
 
-//MTI0MjA2NTA0NTkxMTc2NTAxMg.GHOrdL.VY3V4XVTgdCVpyoJrvCWipCtglb6S5-4RgYMZw
+
+
+
+//MTI0MjA2NTA0NTkxMTc2NTAxMg.G7vqT7.4nu3U9zytxd4t4DJ6uXgWZfDjbtCv6licuqtmg
