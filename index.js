@@ -1,3 +1,26 @@
+//Do pobrania:
+
+//npm init -y
+//npm i discord.js
+//npm install ytdl-core @discordjs/voice @discordjs/opus
+//npm install -g npm
+//npm install -g node-gyp
+//npm install discord.js@latest
+//npm install @discordjs/voice ytdl-core
+//npm install discord.js@latest
+//npm install @discordjs/voice ytdl-core
+//npm install prism-media
+//npm install sodium
+//npm install libsodium-wrappers
+//npm install tweetnacl
+//npm i ffmpeg-static
+//npm install dotenv
+
+//Jak uruchomić:
+
+//node deploy-commands.js
+//node index.js
+
 const fs = require('fs');
 const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
