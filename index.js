@@ -31,7 +31,8 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions
     ]
 });
 
@@ -71,9 +72,16 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+
+
 client.login(token);
 
 
 
 
 //MTI0MjA2NTA0NTkxMTc2NTAxMg.G7vqT7.4nu3U9zytxd4t4DJ6uXgWZfDjbtCv6licuqtmg
+
+//Todo List:
+//Spotify
+//playlisty spotify + yt
+//1/2 1/5
