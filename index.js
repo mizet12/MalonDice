@@ -15,6 +15,8 @@
 //npm install tweetnacl
 //npm i ffmpeg-static
 //npm install dotenv
+//npm install play-dl
+//npm install spotify-web-api-node
 
 //Jak uruchomić:
 
