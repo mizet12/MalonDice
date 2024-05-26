@@ -1,7 +1,7 @@
-// musicPlayer.js
 let player = null;
 let connection = null;
 let queue = [];
+let savedQueue = []; // Dodajemy zmienną do przechowywania zapisanej kolejki
 
 module.exports = {
   getPlayer: () => player,
@@ -25,5 +25,17 @@ module.exports = {
     } else {
       return null;
     }
+  },
+  shuffleQueue: () => {
+    for (let i = queue.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [queue[i], queue[j]] = [queue[j], queue[i]];
+    }
+  },
+  saveQueue: () => {
+    savedQueue = [...queue]; // Zapisuje bieżącą kolejkę
+  },
+  restoreQueue: () => {
+    queue = [...savedQueue]; // Przywraca zapisaną kolejkę
   }
 };
