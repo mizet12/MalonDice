@@ -5,7 +5,7 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('kosc_prem')
-    .setDescription('Rolls two dice and uses the lower value to check against a character attribute')
+    .setDescription('Rolls dice and uses the lower value to check against a character attribute')
     .addIntegerOption(option =>
       option.setName('id')
         .setDescription('The ID of the character')
@@ -17,11 +17,16 @@ module.exports = {
     .addIntegerOption(option =>
       option.setName('nie_pelny')
         .setDescription('Optional modifier to adjust the attribute value')
+        .setRequired(false))
+    .addIntegerOption(option =>
+      option.setName('bonus')
+        .setDescription('Number of dice to roll')
         .setRequired(false)),
   async execute(interaction) {
     const characterId = interaction.options.getInteger('id');
     const attributeName = interaction.options.getString('attribute').toUpperCase();
     const niePelny = interaction.options.getInteger('nie_pelny');
+    const bonus = interaction.options.getInteger('bonus') || 2; // Default to 2 if no bonus is provided
 
     const dataPath = path.join(__dirname, '../../postacie.json');
     const tempPath = path.join(__dirname, '../../postacie_temp.json');
@@ -53,13 +58,16 @@ module.exports = {
       effectiveAttributeValue = Math.floor(attributeValue / niePelny);
     }
 
-    // Roll two random values between 1 and 100 and choose the lower one
-    const roll1 = Math.floor(Math.random() * 100) + 1;
-    const roll2 = Math.floor(Math.random() * 100) + 1;
-    const rollValue = Math.min(roll1, roll2);
+    // Roll the dice and choose the lowest one
+    const rollCount = bonus; // Use the bonus value directly to set the number of dice
+    const rolls = [];
+    for (let i = 0; i < rollCount; i++) {
+      rolls.push(Math.floor(Math.random() * 100) + 1);
+    }
+    const rollValue = Math.min(...rolls);
     const result = rollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
-    let replyContent = `**${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}** (kości: ${roll1}, ${roll2}). ***${result}***.`;
+    let replyContent = `**${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}** (kości: ${rolls.join(', ')}). ***${result}***.`;
 
     if (result === 'Nie zmieścił się' && (rollValue - effectiveAttributeValue) <= character.Atrybuty['SZCZ']) {
       const difference = rollValue - effectiveAttributeValue;
@@ -110,13 +118,15 @@ module.exports = {
     collector.on('collect', async (reaction, user) => {
       console.log(`${user.tag} reacted with 🫸`);
 
-      const newRoll1 = Math.floor(Math.random() * 100) + 1;
-      const newRoll2 = Math.floor(Math.random() * 100) + 1;
-      const newRollValue = Math.min(newRoll1, newRoll2);
+      const newRolls = [];
+      for (let i = 0; i < rollCount; i++) {
+        newRolls.push(Math.floor(Math.random() * 100) + 1);
+      }
+      const newRollValue = Math.min(...newRolls);
       const newResult = newRollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
       const followUp = await interaction.followUp({
-        content: `**${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}** (kości: ${newRoll1}, ${newRoll2}). ***${newResult}***.`,
+        content: `**${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}** (kości: ${newRolls.join(', ')}). ***${newResult}***.`,
         fetchReply: true
       });
     });
