@@ -1,7 +1,8 @@
 let player = null;
 let connection = null;
 let queue = [];
-let savedQueue = []; // Dodajemy zmienną do przechowywania zapisanej kolejki
+let savedQueue = [];
+let isLooping = false; // Zmienna do przechowywania stanu zapętlania
 
 module.exports = {
   getPlayer: () => player,
@@ -21,6 +22,9 @@ module.exports = {
   },
   skipTrack: () => {
     if (queue.length > 0) {
+      if (isLooping) {
+        queue.push(queue[0]); // Dodaj pierwszy utwór na koniec kolejki przed jego usunięciem
+      }
       return queue.shift();
     } else {
       return null;
@@ -33,9 +37,13 @@ module.exports = {
     }
   },
   saveQueue: () => {
-    savedQueue = [...queue]; // Zapisuje bieżącą kolejkę
+    savedQueue = [...queue];
   },
   restoreQueue: () => {
-    queue = [...savedQueue]; // Przywraca zapisaną kolejkę
+    queue = [...savedQueue];
+  },
+  toggleLoop: () => {
+    isLooping = !isLooping;
+    return isLooping;
   }
 };
