@@ -36,9 +36,9 @@ module.exports = {
                     ...postac,
                     Atrybuty: {
                         ...postac.Atrybuty,
-                        WW: postac.Atrybuty.WW + 5,
-                        US: postac.Atrybuty.US + 5,
-                        SW: postac.Atrybuty.SW + 5,
+                        WW: postac.Atrybuty.WW + 6,
+                        US: postac.Atrybuty.US + 6,
+                        SW: postac.Atrybuty.SW + 6,
                     },
                 }));
 
