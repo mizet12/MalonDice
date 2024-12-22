@@ -4,14 +4,19 @@ const path = require('path');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('inspirujaca')
-        .setDescription('Zwiększa lub zmniejsza atrybuty wszystkich postaci o 6')
+        .setName('tempo')
+        .setDescription('Zwiększa lub zmniejsza atrybuty wybranej postaci o 5')
         .addStringOption(option =>
             option.setName('operacja')
                 .setDescription('Operacja do wykonania: + lub -')
+                .setRequired(true))
+        .addIntegerOption(option =>
+            option.setName('id')
+                .setDescription('ID postaci, na którą chcesz wpłynąć')
                 .setRequired(true)),
     async execute(interaction) {
         const operacja = interaction.options.getString('operacja');
+        const postacId = interaction.options.getInteger('id');
         const filePath = path.join(__dirname, '../../', 'postacie.json');
         const tempFilePath = path.join(__dirname, '../../', 'postacie_temp.json');
 
@@ -21,18 +26,22 @@ module.exports = {
             const data = fs.readFileSync(sourceFile, 'utf8');
             const postacie = JSON.parse(data);
 
-            // Zwiększenie lub zmniejszenie atrybutów wszystkich postaci o 6
-            const zmiana = operacja === '+' ? 6 : -6;
-            const updatedPostacie = postacie.map(postac => {
-                postac.Atrybuty.WW += zmiana;
-                postac.Atrybuty.US += zmiana;
-                postac.Atrybuty.SW += zmiana;
-                return postac;
-            });
+            const postac = postacie.find(p => p.id === postacId);
+
+            if (!postac) {
+                await interaction.reply({ content: `Nie znaleziono postaci o ID ${postacId}.`, ephemeral: true });
+                return;
+            }
+
+            // Zwiększenie lub zmniejszenie atrybutów wybranej postaci o 5
+            const zmiana = operacja === '+' ? 5 : -5;
+            postac.Atrybuty.ZW += zmiana;
+            postac.Atrybuty.S += zmiana;
+            postac.Atrybuty.ODP += zmiana;
 
             // Zapis zaktualizowanych danych do pliku tymczasowego
-            fs.writeFileSync(tempFilePath, JSON.stringify(updatedPostacie, null, 2), 'utf8');
-            await interaction.reply(`Atrybuty wszystkich postaci zostały ${operacja === '+' ? 'zwiększone' : 'zmniejszone'} o 6.`);
+            fs.writeFileSync(tempFilePath, JSON.stringify(postacie, null, 2), 'utf8');
+            await interaction.reply(`Atrybuty postaci ${postac.Imię} zostały zmodyfikowane o ${zmiana}.`);
         } catch (error) {
             console.error('Błąd podczas operacji:', error);
             await interaction.reply({ content: 'Wystąpił błąd podczas aktualizacji atrybutów.', ephemeral: true });

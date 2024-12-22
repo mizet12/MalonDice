@@ -4,19 +4,19 @@
     "Imię": "Morgrim Żeliwny",
     "Rasa": "Krasnolud",
     "Klasa": "Mag",
-    "Wiek": 15,
+    "Wiek": 19,
     "Atrybuty": {
-      "WW": 66,
+      "WW": 69,
       "US": 46,
-      "SW": 56,
+      "SW": 75,
       "INT": 51,
-      "S": 53,
-      "ZR": 51,
-      "ZW": 41,
+      "S": 48,
+      "ZR": 46,
+      "ZW": 42,
       "SPO": 41,
-      "ODP": 41,
-      "CHAR": 41,
-      "SZCZ": 0
+      "ODP": 36,
+      "CHAR": 36,
+      "SZCZ": 2
     },
     "PZ": "6/15",
     "OŚ": "1/1"
@@ -50,16 +50,16 @@
     "Klasa": "Kleryk",
     "Wiek": 39,
     "Atrybuty": {
-      "WW": 51,
+      "WW": 59,
       "US": 53,
-      "SW": 73,
+      "SW": 75,
       "INT": 52,
       "S": 41,
-      "ZR": 52,
-      "ZW": 51,
-      "SPO": 51,
-      "ODP": 35,
-      "CHAR": 36,
+      "ZR": 57,
+      "ZW": 56,
+      "SPO": 16,
+      "ODP": 30,
+      "CHAR": 27,
       "SZCZ": 0
     },
     "PZ": "4/10",
@@ -94,17 +94,17 @@
     "Klasa": "Bard",
     "Wiek": 369,
     "Atrybuty": {
-      "WW": 52,
+      "WW": 62,
       "US": 46,
-      "SW": 46,
+      "SW": 26,
       "INT": 46,
       "S": 46,
       "ZR": 51,
       "ZW": 45,
       "SPO": 36,
       "ODP": 36,
-      "CHAR": 53,
-      "SZCZ": 5
+      "CHAR": 64,
+      "SZCZ": 10
     },
     "PZ": "11/11",
     "OŚ": "1/1"
@@ -138,17 +138,17 @@
     "Klasa": "Paladyn",
     "Wiek": 70,
     "Atrybuty": {
-      "WW": 43,
-      "US": 27,
-      "SW": 36,
-      "INT": 46,
+      "WW": 62,
+      "US": 26,
+      "SW": 35,
+      "INT": 45,
       "S": 72,
-      "ZR": 41,
-      "ZW": 43,
-      "SPO": 42,
-      "ODP": 44,
-      "CHAR": 33,
-      "SZCZ": 0
+      "ZR": 40,
+      "ZW": 42,
+      "SPO": 30,
+      "ODP": 34,
+      "CHAR": 32,
+      "SZCZ": 5
     },
     "PZ": "14/16",
     "OŚ": "2/2"
@@ -170,7 +170,7 @@
       "SPO": 50,
       "ODP": 29,
       "CHAR": 38,
-      "SZCZ": 35
+      "SZCZ": 25
     },
     "PZ": "14/16",
     "OŚ": "2/2"
