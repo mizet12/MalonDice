@@ -1,27 +1,3 @@
-//Do pobrania:
-
-//npm init -y
-//npm i discord.js
-//npm install ytdl-core @discordjs/voice @discordjs/opus
-//npm install -g npm
-//npm install -g node-gyp
-//npm install discord.js@latest
-//npm install @discordjs/voice ytdl-core
-//npm install discord.js@latest
-//npm install @discordjs/voice ytdl-core
-//npm install prism-media
-//npm install sodium
-//npm install libsodium-wrappers
-//npm install tweetnacl
-//npm i ffmpeg-static
-//npm install dotenv
-//npm install play-dl
-//npm install spotify-web-api-node
-
-//Jak uruchomić:
-
-//node deploy-commands.js
-//node index.js
 
 const fs = require('fs');
 const path = require('path');
@@ -76,13 +52,3 @@ client.on('interactionCreate', async interaction => {
 
 
 client.login(token);
-
-
-
-
-//MTI0MjA2NTA0NTkxMTc2NTAxMg.G7vqT7.4nu3U9zytxd4t4DJ6uXgWZfDjbtCv6licuqtmg
-
-//Todo List:
-//Spotify
-//playlisty spotify + yt
-//1/2 1/5
