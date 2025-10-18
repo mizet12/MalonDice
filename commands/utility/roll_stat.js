@@ -24,15 +24,12 @@ module.exports = {
     const niePelny = interaction.options.getInteger('nie_pelny');
 
     const dataPath = path.join(__dirname, '../../postacie.json');
-    const tempPath = path.join(__dirname, '../../postacie_temp.json');
 
     let jsonData;
 
-    if (fs.existsSync(tempPath)) {
-      jsonData = JSON.parse(fs.readFileSync(tempPath, 'utf8'));
-    } else {
+    
       jsonData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-    }
+    
 
     const character = jsonData.find(char => char.id === characterId);
     if (!character) {
@@ -52,7 +49,7 @@ module.exports = {
     const rollValue = Math.floor(Math.random() * 100) + 1;
     const result = rollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
-    let replyContent = `**${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}**. ***${result}***.`;
+    let replyContent = `# **${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}**. ***${result}***.`;
 
     if (result === 'Nie zmieścił się' && (rollValue - effectiveAttributeValue) <= character.Atrybuty['SZCZ']) {
       const difference = rollValue - effectiveAttributeValue;
@@ -83,13 +80,11 @@ module.exports = {
         character.Atrybuty['SZCZ'] -= difference;
 
         // Zapisz zaktualizowane dane
-        if (fs.existsSync(tempPath)) {
-          fs.writeFileSync(tempPath, JSON.stringify(jsonData, null, 2));
-        } else {
+        
           fs.writeFileSync(dataPath, JSON.stringify(jsonData, null, 2));
-        }
+        
 
-        interaction.followUp(`Atrybut SZCZ postaci **${character.Imię}** został zmniejszony o ${difference}. Nowa wartość SZCZ: ${character.Atrybuty['SZCZ']}.`);
+        interaction.followUp(`# Atrybut SZCZ postaci **${character.Imię}** został zmniejszony o ${difference}. Nowa wartość SZCZ: ${character.Atrybuty['SZCZ']}.`);
         luckCollector.stop();
       });
     }
@@ -107,7 +102,7 @@ module.exports = {
       const newResult = newRollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
       const followUp = await interaction.followUp({
-        content: `**${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}**. ***${newResult}***.`,
+        content: `# **${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}**. ***${newResult}***.`,
         fetchReply: true
       });
     });

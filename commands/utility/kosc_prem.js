@@ -29,16 +29,13 @@ module.exports = {
     const bonus = interaction.options.getInteger('bonus') || 2; // Default to 2 if no bonus is provided
 
     const dataPath = path.join(__dirname, '../../postacie.json');
-    const tempPath = path.join(__dirname, '../../postacie_temp.json');
+   
     
     let jsonData;
 
-    // Check if the temporary file exists, if so use it, otherwise use the original file
-    if (fs.existsSync(tempPath)) {
-      jsonData = JSON.parse(fs.readFileSync(tempPath, 'utf8'));
-    } else {
+    
       jsonData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-    }
+    
 
     // Find the character by ID
     const character = jsonData.find(char => char.id === characterId);
@@ -67,7 +64,7 @@ module.exports = {
     const rollValue = Math.min(...rolls);
     const result = rollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
-    let replyContent = `**${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}** (kości: ${rolls.join(', ')}). ***${result}***.`;
+    let replyContent = `# **${character.Imię}** rollował na statystyke **${attributeName}**. Wylosował **${rollValue}** (kości: ${rolls.join(', ')}). ***${result}***.`;
 
     if (result === 'Nie zmieścił się' && (rollValue - effectiveAttributeValue) <= character.Atrybuty['SZCZ']) {
       const difference = rollValue - effectiveAttributeValue;
@@ -98,13 +95,11 @@ module.exports = {
         character.Atrybuty['SZCZ'] -= difference;
 
         // Save the updated data
-        if (fs.existsSync(tempPath)) {
-          fs.writeFileSync(tempPath, JSON.stringify(jsonData, null, 2));
-        } else {
+        
           fs.writeFileSync(dataPath, JSON.stringify(jsonData, null, 2));
-        }
+        
 
-        interaction.followUp(`Atrybut SZCZ postaci **${character.Imię}** został zmniejszony o ${difference}. **Nowa wartość SZCZ: ${character.Atrybuty['SZCZ']}**.`);
+        interaction.followUp(`# Atrybut SZCZ postaci **${character.Imię}** został zmniejszony o ${difference}. **Nowa wartość SZCZ: ${character.Atrybuty['SZCZ']}**.`);
         luckCollector.stop();
       });
     }
@@ -126,7 +121,7 @@ module.exports = {
       const newResult = newRollValue <= effectiveAttributeValue ? 'Zmieścił się' : 'Nie zmieścił się';
 
       const followUp = await interaction.followUp({
-        content: `**${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}** (kości: ${newRolls.join(', ')}). ***${newResult}***.`,
+        content: `# **${character.Imię}** force'ował na statystyke **${attributeName}**. Wylosował **${newRollValue}** (kości: ${newRolls.join(', ')}). ***${newResult}***.`,
         fetchReply: true
       });
     });

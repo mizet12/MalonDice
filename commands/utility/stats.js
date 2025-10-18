@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder  } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 
@@ -12,31 +12,42 @@ module.exports = {
         .setRequired(true)),
   async execute(interaction) {
     const id = interaction.options.getInteger('id');
-
-    // Sprawdź czy plik temp istnieje
-    const tempFilePath = path.join(__dirname, '../../postacie_temp.json');
     const postacieFilePath = path.join(__dirname, '../../postacie.json');
-    let postacie;
 
-    if (fs.existsSync(tempFilePath)) {
-      postacie = JSON.parse(fs.readFileSync(tempFilePath, 'utf8'));
-    } else {
+    let postacie;
+    try {
       postacie = JSON.parse(fs.readFileSync(postacieFilePath, 'utf8'));
+    } catch (err) {
+      console.error(err);
+      return interaction.reply('❌ Błąd przy wczytywaniu danych postaci.');
     }
 
-    // Znajdź postać o podanym ID
     const postac = postacie.find(p => p.id === id);
 
     if (!postac) {
-      return interaction.reply(`Nie znaleziono postaci o ID ${id}.`);
+      return interaction.reply(`❌ Nie znaleziono postaci o ID ${id}.`);
     }
 
-    // Przygotuj wiadomość z informacjami o postaci w formie osadzenia (embed)
+    const hp = postac.Atrybuty.HP;
+    const hpmax = postac.Atrybuty.HPMAX;
+    const shild = postac.Atrybuty.SHILD;
+    const pelne = '🟩'.repeat(hp);
+    const puste = '🟥'.repeat(hpmax - hp);
+    const shil = '🟦'.repeat(shild);
+    var pasekHP;
+    if(shild > 0){
+      pasekHP = `# ${hp} + ${shild} [${pelne}${puste}${shil}] ${hpmax}`;
+    }else{
+      pasekHP = `# ${hp} [${pelne}${puste}${shil}] ${hpmax}`;
+    }
+  
+
     const embed = new EmbedBuilder()
       .setTitle(postac.Imię)
-      .setDescription(`Rasa: ${postac.Rasa}\nKlasa: ${postac.Klasa}\nWiek: ${postac.Wiek}`)
+      .setDescription(` Rasa: ${postac.Rasa}\n Klasa: ${postac.Klasa}\n Wiek: ${postac.Wiek}`)
       .setColor('#0099ff')
       .addFields(
+        { name: ' HP', value: pasekHP, inline: false },
         { name: 'WW', value: `${postac.Atrybuty.WW}`, inline: true },
         { name: 'US', value: `${postac.Atrybuty.US}`, inline: true },
         { name: 'SW', value: `${postac.Atrybuty.SW}`, inline: true },

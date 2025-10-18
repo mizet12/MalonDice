@@ -49,6 +49,38 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+const restoreCharacters = () => {
+    const currentPath = path.join(__dirname, 'postacie.json');
+    const defaultPath = path.join(__dirname, 'default_postacie.json');
+
+    const currentData = JSON.parse(fs.readFileSync(currentPath, 'utf8'));
+    const defaultData = JSON.parse(fs.readFileSync(defaultPath, 'utf8'));
+
+    const updatedData = defaultData.map(defaultChar => {
+        const currentChar = currentData.find(c => c.id === defaultChar.id);
+        if (!currentChar) return defaultChar;
+
+        
+        const hp = currentChar?.Atrybuty?.HP ?? defaultChar.Atrybuty.HP;
+        const hpmax = currentChar?.Atrybuty?.HPMAX ?? defaultChar.Atrybuty.HPMAX;
+        const szcz = currentChar?.Atrybuty?.SZCZ ?? defaultChar.Atrybuty.SZCZ;
+        const shild = currentChar?.Atrybuty?.SHILD ?? defaultChar.Atrybuty.SHILD;
+        return {
+            ...defaultChar,
+            Atrybuty: {
+                ...defaultChar.Atrybuty,
+                HP: hp,
+                HPMAX: hpmax,
+                SHILD: shild,
+                SZCZ: szcz
+            }
+        };
+    });
+
+    fs.writeFileSync(currentPath, JSON.stringify(updatedData, null, 2), 'utf8');
+};
+
+restoreCharacters(); 
 
 
 client.login(token);

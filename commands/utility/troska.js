@@ -14,7 +14,7 @@ module.exports = {
         result = "Nie zmieścił się"
     }
 
-    let replyContent = `Rzut na umięjętność troska: **${rollValue}**, **${result}**`;
+    let replyContent = `# Rzut na umięjętność troska: **${rollValue}**, **${result}**`;
     const reply = await interaction.reply({
         content: replyContent,
         fetchReply: true
