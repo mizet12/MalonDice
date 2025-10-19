@@ -281,5 +281,51 @@
       "HP": 15,
       "SHILD": 0
     }
+  },
+  {
+    "id": -5,
+    "Imię": "Malon Kebonas (?)",
+    "Rasa": "Elf",
+    "Klasa": "Bard",
+    "Wiek": 369,
+    "Atrybuty": {
+      "WW": 30,
+      "US": 17,
+      "SW": 21,
+      "INT": 24,
+      "S": 20,
+      "ZR": 26,
+      "ZW": 25,
+      "SPO": 19,
+      "ODP": 19,
+      "CHAR": 30,
+      "SZCZ": 6,
+      "HPMAX": 12,
+      "HP": 12,
+      "SHILD": 0
+    }
+  },
+  {
+    "id": -1,
+    "Imię": "Morgrim Żeliwny (?)",
+    "Rasa": "Krasnolud",
+    "Klasa": "Mag",
+    "Wiek": 19,
+    "Atrybuty": {
+      "WW": 32,
+      "US": 21,
+      "SW": 36,
+      "INT": 26,
+      "S": 25,
+      "ZR": 24,
+      "ZW": 24,
+      "SPO": 22,
+      "ODP": 20,
+      "CHAR": 16,
+      "SZCZ": 6,
+      "HPMAX": 12,
+      "HP": 12,
+      "SHILD": 0
+    }
   }
 ]
